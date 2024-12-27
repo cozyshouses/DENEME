@@ -1,0 +1,23 @@
+[
+    {
+        "evIsmi": "Lüks Daire",
+        "fiyat": "1200 TL",
+        "ilce": "Konak",
+        "adres": "Konak Mahallesi",
+        "url": "https://www.airbnb.com.tr/rooms/12345"
+    },
+    {
+        "evIsmi": "Deniz Manzaralı Ev",
+        "fiyat": "1400 TL",
+        "ilce": "Karşıyaka",
+        "adres": "Karşıyaka Sahil",
+        "url": "https://www.airbnb.com.tr/rooms/54321"
+    },
+    {
+        "evIsmi": "Şık Villa",
+        "fiyat": "2000 TL",
+        "ilce": "Çeşme",
+        "adres": "Çeşme Merkez",
+        "url": "https://www.airbnb.com.tr/rooms/67890"
+    }
+]
