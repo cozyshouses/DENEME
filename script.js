@@ -1,28 +1,40 @@
-document.getElementById('filter-button').addEventListener('click', () => {
-    const reels = document.querySelectorAll('.reel');
+fetch('data.json')
+    .then(response => response.json())
+    .then(data => {
+        renderList(data);
 
-    // İvme efekti ve slot makinesi animasyonu
-    const intervalId = setInterval(() => {
-        reels.forEach((reel, index) => {
-            if (index !== 3 && index !== 6) { // Virgül ve nokta hariç
-                reel.textContent = Math.floor(Math.random() * 10); // Rastgele rakam
+        const filterButton = document.getElementById('filter-button');
+        filterButton.addEventListener('click', () => {
+            const selectedIlce = document.getElementById('ilce-select').value;
+            if (selectedIlce === "Izmir Ortalaması") {
+                renderList(data);
+            } else {
+                const filteredData = data.filter(item => item.ilce === selectedIlce);
+                renderList(filteredData);
             }
         });
-    }, 50);
+    })
+    .catch(error => console.error('Hata:', error));
 
-    // 3 saniye sonra animasyonu durdur
-    setTimeout(() => {
-        clearInterval(intervalId);
+function renderList(items) {
+    const listContainer = document.getElementById('list-container');
+    listContainer.innerHTML = '';
 
-        const randomValue = (Math.random() * 99999.99).toFixed(2); // 0.00 - 99999.99 arasında bir sayı
-        const formattedValue = randomValue.replace('.', ','); // Noktayı virgüle çevir
+    if (items.length === 0) {
+        listContainer.innerHTML = '<p>Bu ilçede ev bulunamadı.</p>';
+        return;
+    }
 
-        // Slot makinesinde rakamları durdur
-        for (let i = 0; i < formattedValue.length; i++) {
-            const char = formattedValue[i];
-            if (i < reels.length) {
-                reels[i].textContent = char;
-            }
-        }
-    }, 3000);
-});
+    items.forEach(item => {
+        const listItem = document.createElement('div');
+        listItem.className = 'list-item';
+        listItem.innerHTML = `
+            <h3>${item.evIsmi}</h3>
+            <p>Fiyat: ${item.fiyat}</p>
+            <p>İlçe: ${item.ilce}</p>
+            <p>Adres: ${item.adres}</p>
+            <a href="${item.url}" target="_blank">Detayları Gör</a>
+        `;
+        listContainer.appendChild(listItem);
+    });
+}
