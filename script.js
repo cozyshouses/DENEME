@@ -1,45 +1,28 @@
 document.getElementById('filter-button').addEventListener('click', () => {
-    const sayaçlar = document.querySelectorAll('.sayaç-kare');
+    const reels = document.querySelectorAll('.reel');
 
-    // Sayaçları sıfırla
-    sayaçlar.forEach((sayaç, index) => {
-        if (index !== 4 && index !== 7) { // Virgül ve nokta dışındakiler
-            sayaç.innerText = '0';
-        }
-    });
-
-    // İvme efektini başlat
-    let interval = 50;
-    let maxValue = 99999.99;
-    let minValue = 0;
-
+    // İvme efekti ve slot makinesi animasyonu
     const intervalId = setInterval(() => {
-        const randomValue = (
-            Math.random() * (maxValue - minValue) + minValue
-        ).toFixed(2);
-        const formattedValue = randomValue.replace('.', ','); // Noktayı virgüle çevir
-
-        // Her haneyi güncelle
-        for (let i = 0; i < formattedValue.length; i++) {
-            const char = formattedValue[i];
-            if (i < sayaçlar.length) {
-                sayaçlar[i].innerText = char;
+        reels.forEach((reel, index) => {
+            if (index !== 3 && index !== 6) { // Virgül ve nokta hariç
+                reel.textContent = Math.floor(Math.random() * 10); // Rastgele rakam
             }
-        }
-    }, interval);
+        });
+    }, 50);
 
-    // İvme ile yavaşlat
+    // 3 saniye sonra animasyonu durdur
     setTimeout(() => {
         clearInterval(intervalId);
-        const finalValue = (
-            Math.random() * (maxValue - minValue) + minValue
-        ).toFixed(2);
-        const formattedFinalValue = finalValue.replace('.', ',');
-        for (let i = 0; i < formattedFinalValue.length; i++) {
-            const char = formattedFinalValue[i];
-            if (i < sayaçlar.length) {
-                sayaçlar[i].innerText = char;
+
+        const randomValue = (Math.random() * 99999.99).toFixed(2); // 0.00 - 99999.99 arasında bir sayı
+        const formattedValue = randomValue.replace('.', ','); // Noktayı virgüle çevir
+
+        // Slot makinesinde rakamları durdur
+        for (let i = 0; i < formattedValue.length; i++) {
+            const char = formattedValue[i];
+            if (i < reels.length) {
+                reels[i].textContent = char;
             }
         }
-    }, 3000); // 3 saniye sonra duracak
+    }, 3000);
 });
