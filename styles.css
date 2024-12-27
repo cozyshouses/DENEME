@@ -1,128 +1,103 @@
-/* style.css */
-
-/* Genel Ayarlar */
+/* Tüm sayfa için temel stiller */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
-    line-height: 1.6;
-}
-
-header {
-    background: #333;
-    color: #fff;
-    padding: 10px 20px;
-    text-align: center;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-}
-
-header p {
-    margin: 5px 0 0;
-    font-size: 1rem;
-}
-
-main {
-    padding: 20px;
-}
-
-/* İlçe Seçim Alanı */
-#detay-secim {
-    background: #fff;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#detay-secim h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-#detay-secim label {
-    font-size: 1rem;
-    margin-right: 10px;
-}
-
-#detay-secim select {
-    padding: 5px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-}
-
-#detay-secim button {
-    background: #333;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-left: 10px;
-    transition: background 0.3s ease;
-}
-
-#detay-secim button:hover {
-    background: #555;
-}
-
-/* Sonuçlar Alanı */
-#sonuclar {
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#sonuclar h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-#ev-listesi {
+    background-color: #f9f9f9;
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
-.ev-karti {
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-    width: calc(33.333% - 10px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
+/* Başlık ve açıklama */
+header {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.ev-karti:hover {
-    transform: scale(1.05);
+h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: #333;
 }
 
-.ev-karti h3 {
+p {
     font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.ev-karti p {
-    margin: 5px 0;
-    font-size: 0.9rem;
+    margin: 10px 0;
     color: #555;
 }
 
-footer {
+/* Filtre kutusu */
+.filter {
     text-align: center;
-    background: #333;
-    color: #fff;
+    margin-bottom: 20px;
+}
+
+.filter select, .filter button {
     padding: 10px;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.filter button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+}
+
+.filter button:hover {
+    background-color: #0056b3;
+}
+
+/* Liste Konteyneri */
+.list-container {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.list-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.list-item h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.list-item p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.list-item a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.list-item a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
     margin-top: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #999;
 }
