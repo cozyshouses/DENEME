@@ -1,47 +1,42 @@
-// script.js
+// JSON verisini çekmek için fetch kullanıyoruz
+fetch('data.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("JSON verisi alınamadı");
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Veriler alındı, listeyi oluştur
+        renderList(data);
 
-// JSON veri dosyasını yükleyip işleme
-async function fetchEvData() {
-    const response = await fetch('data.json'); // data.json dosyasını okur
-    const data = await response.json();
-    return data;
-}
-
-// İlçe seçiminden sonra sonuçları filtrele ve göster
-async function filtrele() {
-    const ilce = document.getElementById('ilce-secimi').value; // Kullanıcının seçtiği ilçe
-    const sonuclarDiv = document.getElementById('ev-listesi'); // Sonuçların gösterileceği alan
-
-    // Önceki sonuçları temizle
-    sonuclarDiv.innerHTML = '';
-
-    // JSON verisini getir
-    const evler = await fetchEvData();
-
-    // Seçilen ilçeye göre filtrele
-    const filtrelenmisEvler = evler.filter(ev => ev.ilce === ilce);
-
-    if (filtrelenmisEvler.length === 0) {
-        sonuclarDiv.innerHTML = `<p>Seçilen ilçede ev bulunamadı.</p>`;
-    } else {
-        filtrelenmisEvler.forEach(ev => {
-            // Her bir ev için bir kart oluştur
-            const evKart = document.createElement('div');
-            evKart.classList.add('ev-karti');
-
-            evKart.innerHTML = `
-                <h3>${ev.evIsmi}</h3>
-                <p><strong>Fiyat:</strong> ${ev.fiyat}</p>
-                <p><strong>İlçe:</strong> ${ev.ilce}</p>
-                <p><strong>Adres:</strong> ${ev.adres}</p>
-                <a href="${ev.url}" target="_blank">Detayları Gör</a>
-            `;
-
-            // Kartı listeye ekle
-            sonuclarDiv.appendChild(evKart);
+        // Filtreleme işlemini bağla
+        const filterButton = document.getElementById('filter-button');
+        filterButton.addEventListener('click', () => {
+            const selectedIlce = document.getElementById('ilce-select').value;
+            const filteredData = data.filter(item => item.ilce === selectedIlce);
+            renderList(filteredData);
         });
-    }
-}
+    })
+    .catch(error => {
+        console.error('Hata:', error);
+    });
 
-// Filtreleme butonuna tıklama olayını bağla
-document.getElementById('filtrele-buton').addEventListener('click', filtrele);// Add JavaScript functionality here (if needed)
+// Listeyi render eden fonksiyon
+function renderList(items) {
+    const listContainer = document.getElementById('list-container');
+    listContainer.innerHTML = ''; // Önceki listeyi temizle
+
+    items.forEach(item => {
+        const listItem = document.createElement('div');
+        listItem.className = 'list-item';
+        listItem.innerHTML = `
+            <h3>${item.evIsmi}</h3>
+            <p>Fiyat: ${item.fiyat}</p>
+            <p>İlçe: ${item.ilce}</p>
+            <p>Adres: ${item.adres}</p>
+            <a href="${item.url}" target="_blank">Detayları Gör</a>
+        `;
+        listContainer.appendChild(listItem);
+    });
+}
