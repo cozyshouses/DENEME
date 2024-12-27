@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Günübirlik Ev Fiyat Analizi</title>
+    <title>İzmir Günübirlik Evler</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>Günübirlik Evler Gecelik Fiyat Analizi</h1>
-        <p>Ev sahibisiniz? Bölgenizin fiyat ortalamasını öğrenin!</p>
+        <p>Ev fiyatlarınızı karşılaştırın ve ortalama fiyatları öğrenin.</p>
     </header>
 
     <main>
@@ -17,32 +17,34 @@
         <div class="filter">
             <label for="ilce-select">İlçe Seçin:</label>
             <select id="ilce-select">
-                <option value="Izmir">İzmir Ortalaması</option>
+                <option value="Izmir Ortalaması">İzmir Ortalaması</option>
                 <option value="Konak">Konak</option>
                 <option value="Karşıyaka">Karşıyaka</option>
                 <option value="Çeşme">Çeşme</option>
                 <option value="Bornova">Bornova</option>
-                <!-- Diğer ilçeleri buraya ekleyin -->
+                <option value="Buca">Buca</option>
+                <option value="Balçova">Balçova</option>
+                <!-- Diğer ilçeler buraya eklendi -->
             </select>
             <button id="filter-button">Ortalama Fiyat Öğren</button>
         </div>
 
-        <!-- Slot Makinesi -->
-        <div id="slot-machine" class="slot-machine">
+        <!-- Slot makinesi -->
+        <div class="slot-machine">
+            <div class="reel">0</div>
+            <div class="reel">0</div>
+            <div class="reel">.</div>
             <div class="reel">0</div>
             <div class="reel">0</div>
             <div class="reel">0</div>
             <div class="reel">,</div>
             <div class="reel">0</div>
             <div class="reel">0</div>
-            <div class="reel">.</div>
-            <div class="reel">0</div>
-            <div class="reel">0</div>
         </div>
     </main>
 
     <footer>
-        <p>© 2024 Günübirlik Ev Analizi</p>
+        <p>© 2024 Günübirlik Evler</p>
     </footer>
 
     <script src="script.js"></script>
