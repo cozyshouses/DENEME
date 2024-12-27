@@ -1,86 +1,65 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cozy's Houses - İlçe Seçimi</title>
-    <style>
-        /* Basit CSS */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-        .card {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-        .card h4 {
-            margin: 0;
-        }
-        #results {
-            margin-top: 20px;
-        }
-    </style>
+    <title>Cozy's Houses - İzmir Evleri</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Cozy's Houses</h1>
-    <div>
-        <h3>Detayları Gör</h3>
-        <label for="district-select">İlçe Seçiniz:</label>
-        <select id="district-select">
-            <option value="">Bir ilçe seçin</option>
-            <option value="Konak">Konak</option>
-            <option value="Karşıyaka">Karşıyaka</option>
-            <option value="Bornova">Bornova</option>
-            <option value="Buca">Buca</option>
-            <option value="Çeşme">Çeşme</option>
-            <option value="Narlıdere">Narlıdere</option>
-            <option value="Urla">Urla</option>
-        </select>
-        <button onclick="showDistrictDetails()">Detayları Gör</button>
-    </div>
-    <div id="results"></div>
+    <header>
+        <h1>Cozy's Houses</h1>
+        <p>İzmir'in en güzel evlerini keşfedin!</p>
+    </header>
 
-    <script>
-        function showDistrictDetails() {
-            const districtSelect = document.getElementById("district-select");
-            const selectedDistrict = districtSelect.value;
+    <main>
+        <section id="detay-secim">
+            <h2>Detayları Gör</h2>
+            <label for="ilce-secimi">Bir ilçe seçin:</label>
+            <select id="ilce-secimi">
+                <option value="">İlçe Seçin</option>
+                <option value="Konak">Konak</option>
+                <option value="Karşıyaka">Karşıyaka</option>
+                <option value="Bornova">Bornova</option>
+                <option value="Buca">Buca</option>
+                <option value="Çeşme">Çeşme</option>
+                <option value="Balçova">Balçova</option>
+                <option value="Narlıdere">Narlıdere</option>
+                <option value="Güzelbahçe">Güzelbahçe</option>
+                <option value="Bayraklı">Bayraklı</option>
+                <option value="Aliağa">Aliağa</option>
+                <option value="Menemen">Menemen</option>
+                <option value="Foça">Foça</option>
+                <option value="Kemalpaşa">Kemalpaşa</option>
+                <option value="Seferihisar">Seferihisar</option>
+                <option value="Selçuk">Selçuk</option>
+                <option value="Tire">Tire</option>
+                <option value="Torbalı">Torbalı</option>
+                <option value="Urla">Urla</option>
+                <option value="Bergama">Bergama</option>
+                <option value="Kınık">Kınık</option>
+                <option value="Dikili">Dikili</option>
+                <option value="Kiraz">Kiraz</option>
+                <option value="Ödemiş">Ödemiş</option>
+                <option value="Beydağ">Beydağ</option>
+                <option value="Menderes">Menderes</option>
+                <option value="Karaburun">Karaburun</option>
+            </select>
+            <button id="ara-buton">Evleri Gör</button>
+        </section>
 
-            if (!selectedDistrict) {
-                alert("Lütfen bir ilçe seçiniz!");
-                return;
-            }
+        <section id="sonuclar">
+            <h2>Sonuçlar</h2>
+            <div id="ev-listesi">
+                <!-- Ev listesi buraya yüklenecek -->
+            </div>
+        </section>
+    </main>
 
-            fetch("./data/deneme1.json") // JSON dosyasını okuyacak
-                .then((response) => response.json())
-                .then((data) => {
-                    const filteredData = data.filter(
-                        (item) => item.ilce.toLowerCase() === selectedDistrict.toLowerCase()
-                    );
+    <footer>
+        <p>© 2024 Cozy's Houses. Tüm hakları saklıdır.</p>
+    </footer>
 
-                    const resultsContainer = document.getElementById("results");
-                    resultsContainer.innerHTML = ""; // Eski sonuçları temizle
-
-                    if (filteredData.length === 0) {
-                        resultsContainer.innerHTML = `<p>${selectedDistrict} ilçesinde ev bulunamadı.</p>`;
-                    } else {
-                        filteredData.forEach((item) => {
-                            resultsContainer.innerHTML += `
-                                <div class="card">
-                                    <h4>${item.evIsmi}</h4>
-                                    <p>Fiyat: ${item.fiyat}</p>
-                                    <p>Adres: ${item.adres}</p>
-                                    <a href="${item.url}" target="_blank">Detaylar</a>
-                                </div>
-                            `;
-                        });
-                    }
-                })
-                .catch((error) => console.error("Veri alınırken hata oluştu:", error));
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
