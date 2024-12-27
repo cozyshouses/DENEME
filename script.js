@@ -1,4 +1,4 @@
-// JSON verisini çekmek için fetch kullanıyoruz
+// JSON verisini fetch ile çekiyoruz
 fetch('data.json')
     .then(response => {
         if (!response.ok) {
@@ -7,16 +7,20 @@ fetch('data.json')
         return response.json();
     })
     .then(data => {
-        // Veriler alındı, listeyi oluştur
+        // Listeyi başlangıçta tümüyle göster
         renderList(data);
 
-        // Filtreleme işlemini bağla
+        // Filtreleme işlemi için butona event ekle
         const filterButton = document.getElementById('filter-button');
         filterButton.addEventListener('click', () => {
             const selectedIlce = document.getElementById('ilce-select').value;
+
+            // İlçe seçilmişse filtrele, değilse tümünü göster
             const filteredData = selectedIlce
                 ? data.filter(item => item.ilce === selectedIlce)
-                : data; // Tümü seçildiyse tüm verileri göster
+                : data;
+
+            // Filtrelenmiş listeyi render et
             renderList(filteredData);
         });
     })
@@ -27,7 +31,7 @@ fetch('data.json')
 // Listeyi render eden fonksiyon
 function renderList(items) {
     const listContainer = document.getElementById('list-container');
-    listContainer.innerHTML = ''; // Önceki listeyi temizle
+    listContainer.innerHTML = ''; // Mevcut listeyi temizle
 
     if (items.length === 0) {
         listContainer.innerHTML = '<p>Bu ilçede herhangi bir ev bulunamadı.</p>';
@@ -41,7 +45,6 @@ function renderList(items) {
             <h3>${item.evIsmi}</h3>
             <p>Fiyat: ${item.fiyat}</p>
             <p>İlçe: ${item.ilce}</p>
-            <p>Adres: ${item.adres}</p>
             <a href="${item.url}" target="_blank">Detayları Gör</a>
         `;
         listContainer.appendChild(listItem);
