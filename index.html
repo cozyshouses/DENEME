@@ -3,61 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cozy's Houses - İzmir Evleri</title>
+    <title>İzmir Ev Listesi</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Cozy's Houses</h1>
-        <p>İzmir'in en güzel evlerini keşfedin!</p>
+        <h1>İzmir'deki Evler</h1>
+        <p>İlçe seçerek listeyi filtreleyebilirsiniz.</p>
     </header>
 
     <main>
-        <section id="detay-secim">
-            <h2>Detayları Gör</h2>
-            <label for="ilce-secimi">Bir ilçe seçin:</label>
-            <select id="ilce-secimi">
-                <option value="">İlçe Seçin</option>
+        <!-- İlçe seçimi -->
+        <div class="filter">
+            <label for="ilce-select">İlçe Seçin:</label>
+            <select id="ilce-select">
+                <option value="">Tümü</option>
                 <option value="Konak">Konak</option>
                 <option value="Karşıyaka">Karşıyaka</option>
-                <option value="Bornova">Bornova</option>
-                <option value="Buca">Buca</option>
                 <option value="Çeşme">Çeşme</option>
-                <option value="Balçova">Balçova</option>
-                <option value="Narlıdere">Narlıdere</option>
-                <option value="Güzelbahçe">Güzelbahçe</option>
-                <option value="Bayraklı">Bayraklı</option>
-                <option value="Aliağa">Aliağa</option>
-                <option value="Menemen">Menemen</option>
-                <option value="Foça">Foça</option>
-                <option value="Kemalpaşa">Kemalpaşa</option>
-                <option value="Seferihisar">Seferihisar</option>
-                <option value="Selçuk">Selçuk</option>
-                <option value="Tire">Tire</option>
-                <option value="Torbalı">Torbalı</option>
-                <option value="Urla">Urla</option>
-                <option value="Bergama">Bergama</option>
-                <option value="Kınık">Kınık</option>
-                <option value="Dikili">Dikili</option>
-                <option value="Kiraz">Kiraz</option>
-                <option value="Ödemiş">Ödemiş</option>
-                <option value="Beydağ">Beydağ</option>
-                <option value="Menderes">Menderes</option>
-                <option value="Karaburun">Karaburun</option>
+                <!-- Diğer ilçeleri buraya ekle -->
             </select>
-            <button id="ara-buton">Evleri Gör</button>
-        </section>
+            <button id="filter-button">Filtrele</button>
+        </div>
 
-        <section id="sonuclar">
-            <h2>Sonuçlar</h2>
-            <div id="ev-listesi">
-                <!-- Ev listesi buraya yüklenecek -->
-            </div>
-        </section>
+        <!-- Liste -->
+        <div id="list-container" class="list-container"></div>
     </main>
 
     <footer>
-        <p>© 2024 Cozy's Houses. Tüm hakları saklıdır.</p>
+        <p>© 2024 İzmir Ev Listesi</p>
     </footer>
 
     <script src="script.js"></script>
