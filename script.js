@@ -1,50 +1,45 @@
-// İlçeye göre ortalama fiyat hesaplama
-const prices = {
-    "İzmir Ortalaması": 3000,
-    "Konak": 3500,
-    "Karşıyaka": 3200,
-    "Çeşme": 5500,
-    "Bornova": 2800,
-    "Buca": 2500,
-    // Diğer ilçelerin fiyatlarını ekleyin
-};
-
-// Sayaçları oluştur
-const counterContainer = document.getElementById('counter-container');
-for (let i = 0; i < 9; i++) {
-    const counter = document.createElement('div');
-    counter.className = 'counter';
-    counter.innerText = "00";
-    counterContainer.appendChild(counter);
-}
-
-// Filtreleme işlemi
 document.getElementById('filter-button').addEventListener('click', () => {
-    const selectedIlce = document.getElementById('ilce-select').value;
-    const averagePrice = prices[selectedIlce] || 3000;
+    const sayaçlar = document.querySelectorAll('.sayaç-kare');
 
-    // Sayaç döndürme animasyonu
-    const counters = document.querySelectorAll('.counter');
-    counters.forEach((counter, index) => {
-        setTimeout(() => {
-            let value = 0;
-            const interval = setInterval(() => {
-                value = Math.floor(Math.random() * 100000);
-                counter.innerText = value.toLocaleString('tr-TR', {
-                    minimumIntegerDigits: 6,
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                });
-            }, 50);
-
-            setTimeout(() => {
-                clearInterval(interval);
-                counter.innerText = averagePrice.toLocaleString('tr-TR', {
-                    minimumIntegerDigits: 6,
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                });
-            }, 2000);
-        }, index * 200);
+    // Sayaçları sıfırla
+    sayaçlar.forEach((sayaç, index) => {
+        if (index !== 4 && index !== 7) { // Virgül ve nokta dışındakiler
+            sayaç.innerText = '0';
+        }
     });
+
+    // İvme efektini başlat
+    let interval = 50;
+    let maxValue = 99999.99;
+    let minValue = 0;
+
+    const intervalId = setInterval(() => {
+        const randomValue = (
+            Math.random() * (maxValue - minValue) + minValue
+        ).toFixed(2);
+        const formattedValue = randomValue.replace('.', ','); // Noktayı virgüle çevir
+
+        // Her haneyi güncelle
+        for (let i = 0; i < formattedValue.length; i++) {
+            const char = formattedValue[i];
+            if (i < sayaçlar.length) {
+                sayaçlar[i].innerText = char;
+            }
+        }
+    }, interval);
+
+    // İvme ile yavaşlat
+    setTimeout(() => {
+        clearInterval(intervalId);
+        const finalValue = (
+            Math.random() * (maxValue - minValue) + minValue
+        ).toFixed(2);
+        const formattedFinalValue = finalValue.replace('.', ',');
+        for (let i = 0; i < formattedFinalValue.length; i++) {
+            const char = formattedFinalValue[i];
+            if (i < sayaçlar.length) {
+                sayaçlar[i].innerText = char;
+            }
+        }
+    }, 3000); // 3 saniye sonra duracak
 });
