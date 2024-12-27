@@ -1,8 +1,8 @@
 body {
     font-family: Arial, sans-serif;
+    text-align: center;
     background-color: #ffffff;
     color: #333;
-    text-align: center;
     margin: 0;
     padding: 0;
 }
@@ -15,25 +15,12 @@ header {
     margin: 20px 0;
 }
 
-#slot-machine {
+.slot-machine {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin: 40px 0;
+    gap: 5px;
+    margin-top: 20px;
 }
 
 .reel {
-    width: 60px;
-    height: 100px;
-    background-color: #f0f0f0;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    margin: 0 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 32px;
-    font-weight: bold;
-    color: #333;
-    box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.2);
-}
+    width: 40px
