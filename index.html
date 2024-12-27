@@ -1,51 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BNB Evleri Fiyat Analiz Projesi</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Cozy's Houses - İlçe Seçimi</title>
+    <style>
+        /* Basit CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .card h4 {
+            margin: 0;
+        }
+        #results {
+            margin-top: 20px;
+        }
+    </style>
 </head>
-
 <body>
-    <header>
-        <h1>BNB Evleri Fiyat Analiz Projesi</h1>
-        <p>İzmir'deki tüm Airbnb evlerinin fiyat analizini yapın</p>
-    </header>
+    <h1>Cozy's Houses</h1>
+    <div>
+        <h3>Detayları Gör</h3>
+        <label for="district-select">İlçe Seçiniz:</label>
+        <select id="district-select">
+            <option value="">Bir ilçe seçin</option>
+            <option value="Konak">Konak</option>
+            <option value="Karşıyaka">Karşıyaka</option>
+            <option value="Bornova">Bornova</option>
+            <option value="Buca">Buca</option>
+            <option value="Çeşme">Çeşme</option>
+            <option value="Narlıdere">Narlıdere</option>
+            <option value="Urla">Urla</option>
+        </select>
+        <button onclick="showDistrictDetails()">Detayları Gör</button>
+    </div>
+    <div id="results"></div>
 
-    <nav>
-        <ul>
-            <li><a href="#">Ana Sayfa</a></li>
-            <li><a href="#about">Hakkında</a></li>
-            <li><a href="#services">Hizmetler</a></li>
-            <li><a href="#contact">İletişim</a></li>
-        </ul>
-    </nav>
+    <script>
+        function showDistrictDetails() {
+            const districtSelect = document.getElementById("district-select");
+            const selectedDistrict = districtSelect.value;
 
-    <section class="container">
-        <div class="card">
-            <h3>Veri Toplama</h3>
-            <p>İzmir'deki tüm Airbnb evlerinden fiyat verilerini toplayın</p>
-            <a href="#" class="btn">Detayları Gör</a>
-        </div>
-        <div class="card">
-            <h3>Fiyat Analizi</h3>
-            <p>Evlerin fiyatlarını karşılaştırın ve analiz edin</p>
-            <a href="#" class="btn">Detayları Gör</a>
-        </div>
-        <div class="card">
-            <h3>Grafikler ve Raporlar</h3>
-            <p>Fiyat değişikliklerini görsel olarak takip edin</p>
-            <a href="#" class="btn">Detayları Gör</a>
-        </div>
-    </section>
+            if (!selectedDistrict) {
+                alert("Lütfen bir ilçe seçiniz!");
+                return;
+            }
 
-    <footer>
-        <p>BNB Evleri Fiyat Analiz Projesi &copy; 2024</p>
-    </footer>
+            fetch("./data/deneme1.json") // JSON dosyasını okuyacak
+                .then((response) => response.json())
+                .then((data) => {
+                    const filteredData = data.filter(
+                        (item) => item.ilce.toLowerCase() === selectedDistrict.toLowerCase()
+                    );
 
-    <script src="scripts.js"></script>
+                    const resultsContainer = document.getElementById("results");
+                    resultsContainer.innerHTML = ""; // Eski sonuçları temizle
+
+                    if (filteredData.length === 0) {
+                        resultsContainer.innerHTML = `<p>${selectedDistrict} ilçesinde ev bulunamadı.</p>`;
+                    } else {
+                        filteredData.forEach((item) => {
+                            resultsContainer.innerHTML += `
+                                <div class="card">
+                                    <h4>${item.evIsmi}</h4>
+                                    <p>Fiyat: ${item.fiyat}</p>
+                                    <p>Adres: ${item.adres}</p>
+                                    <a href="${item.url}" target="_blank">Detaylar</a>
+                                </div>
+                            `;
+                        });
+                    }
+                })
+                .catch((error) => console.error("Veri alınırken hata oluştu:", error));
+        }
+    </script>
 </body>
-
 </html>
