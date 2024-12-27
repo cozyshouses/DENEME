@@ -1,60 +1,55 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Günübirlik Evler Gecelik Fiyat Analizi</title>
+    <title>İzmir Günübirlik Ev Fiyat Analizi</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>Günübirlik Evler Gecelik Fiyat Analizi</h1>
-        <p>Evinizin bulunduğu bölgenin fiyat ortalamasını ve önerilen fiyatları öğrenin.</p>
+        <p>Ev sahibisiniz? Bölgenizin fiyat ortalamasını öğrenin!</p>
     </header>
+
     <main>
+        <!-- İlçe seçimi -->
         <div class="filter">
             <label for="ilce-select">İlçe Seçin:</label>
             <select id="ilce-select">
-                <option value="İzmir Ortalaması">İzmir Ortalaması</option>
+                <option value="Izmir">İzmir Ortalaması</option>
                 <option value="Konak">Konak</option>
                 <option value="Karşıyaka">Karşıyaka</option>
                 <option value="Çeşme">Çeşme</option>
                 <option value="Bornova">Bornova</option>
                 <option value="Buca">Buca</option>
                 <option value="Balçova">Balçova</option>
-                <option value="Bayraklı">Bayraklı</option>
-                <option value="Narlıdere">Narlıdere</option>
-                <option value="Menemen">Menemen</option>
-                <option value="Gaziemir">Gaziemir</option>
-                <option value="Seferihisar">Seferihisar</option>
-                <option value="Urla">Urla</option>
-                <option value="Tire">Tire</option>
-                <option value="Torbalı">Torbalı</option>
-                <option value="Ödemiş">Ödemiş</option>
-                <option value="Selçuk">Selçuk</option>
-                <option value="Kemalpaşa">Kemalpaşa</option>
-                <option value="Karaburun">Karaburun</option>
-                <option value="Dikili">Dikili</option>
-                <option value="Foça">Foça</option>
-                <option value="Beydağ">Beydağ</option>
-                <option value="Bergama">Bergama</option>
-                <option value="Bayındır">Bayındır</option>
-                <option value="Aliağa">Aliağa</option>
-                <option value="Çiğli">Çiğli</option>
                 <option value="Güzelbahçe">Güzelbahçe</option>
-                <option value="Kınık">Kınık</option>
-                <option value="Kiraz">Kiraz</option>
-                <option value="Menderes">Menderes</option>
+                <option value="Menemen">Menemen</option>
+                <!-- Diğer ilçeleri buraya ekleyin -->
             </select>
             <button id="filter-button">Ortalama Fiyat Öğren</button>
         </div>
-        <div id="counter-container" class="counter-container">
-            <!-- Sayaç burada oluşturulacak -->
+
+        <!-- Sayaç -->
+        <div id="sayaç-container" class="sayaç-container">
+            <div class="sayaç-kare">0</div>
+            <div class="sayaç-kare">0</div>
+            <div class="sayaç-kare">0</div>
+            <div class="sayaç-kare">0</div>
+            <div class="sayaç-kare">,</div>
+            <div class="sayaç-kare">0</div>
+            <div class="sayaç-kare">0</div>
+            <div class="sayaç-kare">.</div>
+            <div class="sayaç-kare">0</div>
+            <div class="sayaç-kare">0</div>
         </div>
     </main>
+
     <footer>
-        <p>© 2024 Günübirlik Evler Analizi</p>
+        <p>© 2024 İzmir Günübirlik Ev Analizi</p>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
