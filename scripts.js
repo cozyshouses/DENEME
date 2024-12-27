@@ -13,8 +13,15 @@ fetch('data.json')
         // Filtreleme işlemini bağla
         const filterButton = document.getElementById('filter-button');
         filterButton.addEventListener('click', () => {
+            console.log("Filtreleme Başlatıldı"); // Filtreleme işlemi başlatıldığında log
             const selectedIlce = document.getElementById('ilce-select').value;
+            console.log("Seçilen İlçe:", selectedIlce); // Seçilen ilçeyi logla
+
+            // Filtrelenmiş verileri hesapla
             const filteredData = data.filter(item => item.ilce === selectedIlce);
+            console.log("Filtrelenmiş Veri:", filteredData); // Filtrelenmiş veriyi logla
+
+            // Listeyi yeniden render et
             renderList(filteredData);
         });
     })
