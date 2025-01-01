@@ -1,26 +1,75 @@
+/* Genel Ayarlar */
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #ffffff;
-    color: #333;
-    margin: 0;
-    padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  color: #333;
 }
 
-header {
-    margin: 20px 0;
+/* Başlık Stili */
+h1 {
+  text-align: center;
+  color: #444;
+  margin-top: 20px;
 }
 
-.filter {
-    margin: 20px 0;
+/* Konteyner Ayarları */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
-.slot-machine {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    margin-top: 20px;
+/* Form Stili */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
 }
 
-.reel {
-    width: 40px
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+select, button {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #ff5a5f;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e04e50;
+}
+
+/* Sonuç Bölümü */
+.result {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #e7f3fe;
+  border-left: 5px solid #2196F3;
+  border-radius: 4px;
+}
+
+/* Alt Bilgi */
+footer {
+  text-align: center;
+  margin-top: 30px;
+  padding: 10px;
+  background-color: #f1f1f1;
+  color: #777;
+}
