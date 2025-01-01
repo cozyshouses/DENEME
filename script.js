@@ -14,6 +14,7 @@ fetch('data.json')
         return;
       }
 
+      // Seçilen ilçedeki evleri filtrele
       const filteredHouses = data.filter(house => house["İlçe"] === selectedDistrict);
 
       if (filteredHouses.length === 0) {
@@ -21,12 +22,19 @@ fetch('data.json')
         return;
       }
 
+      // Gecelik fiyatları sayıya dönüştür ve toplamını al
       const totalPrice = filteredHouses.reduce((sum, house) => {
-        const price = parseFloat(house["Gecelik Fiyat"].replace('₺', '').replace(',', ''));
-        return sum + price;
+        const price = house["Gecelik Fiyat"]
+          .replace('₺', '') // ₺ sembolünü kaldır
+          .replace(/\./g, '') // Binlik ayraçları kaldır
+          .replace(',', '.'); // Virgül yerine nokta koy
+        return sum + parseFloat(price);
       }, 0);
 
+      // Ortalama fiyatı hesapla
       const averagePrice = totalPrice / filteredHouses.length;
+
+      // Ortalama fiyatı sonuç kutusunda göster
       averageResult.textContent = `${averagePrice.toFixed(2).replace('.', ',')} ₺`;
     });
   })
