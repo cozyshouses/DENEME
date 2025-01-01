@@ -3,13 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Airbnb Veri Analizi</title>
+  <title>Ortalama Fiyat Hesaplama</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <h1>Airbnb Fiyat Analizi</h1>
-    <div id="house-list" class="house-container"></div>
+    <h1>Airbnb İlçe Bazlı Ortalama Fiyat</h1>
+    <div id="actions">
+      <select id="district-select">
+        <option value="">İlçe Seç</option>
+        <option value="Karşıyaka">Karşıyaka</option>
+        <option value="Konak">Konak</option>
+        <option value="Bornova">Bornova</option>
+      </select>
+      <button id="calculate-btn">Ortalama Fiyat Öğren</button>
+    </div>
+    <div id="result-container">
+      <span id="average-result">0000,00 ₺</span>
+    </div>
   </div>
   <footer>© 2025 Airbnb Veri Analizi Projesi</footer>
   <script src="script.js"></script>
