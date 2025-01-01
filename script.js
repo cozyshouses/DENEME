@@ -1,30 +1,20 @@
-document.getElementById("filter-button").addEventListener("click", () => {
-    const sayaçlar = document.querySelectorAll(".sayaç");
-    const intervalIds = [];
-
-    // Her bir sayaç için rastgele sayı animasyonu başlat
-    sayaçlar.forEach((sayaç, index) => {
-        let count = 0;
-        const intervalId = setInterval(() => {
-            if (count >= 50) {
-                clearInterval(intervalId);
-                if (index === sayaçlar.length - 1) {
-                    // Son sayaç tamamlandığında durdur
-                    finalizeResults();
-                }
-                return;
-            }
-            sayaç.textContent = Math.floor(Math.random() * 10);
-            count++;
-        }, 50 + index * 50);
-
-        intervalIds.push(intervalId);
+// Verileri JSON dosyasından yükleme
+fetch('data.json')
+  .then(response => response.json())
+  .then(data => {
+    const houseList = document.getElementById('house-list');
+    data.forEach(item => {
+      const houseCard = document.createElement('div');
+      houseCard.className = 'house-card';
+      
+      houseCard.innerHTML = `
+        <h2>${item["Ev İsmi"]}</h2>
+        <p><strong>Gecelik Fiyat:</strong> ${item["Gecelik Fiyat"]}</p>
+        <p><strong>Ev Tipi:</strong> ${item["Ev Tipi"]}</p>
+        <p><strong>İlçe:</strong> ${item["İlçe"]}</p>
+        <a href="https://${item["Profil URL"]}" target="_blank">Detaylı Bilgi</a>
+      `;
+      houseList.appendChild(houseCard);
     });
-
-    function finalizeResults() {
-        const finalResult = ["5", "2", "7", "0", "1", ",", "7", "8", "6"]; // Örnek sonuç
-        sayaçlar.forEach((sayaç, index) => {
-            sayaç.textContent = finalResult[index];
-        });
-    }
-});
+  })
+  .catch(error => console.error('Veri yüklenirken hata oluştu:', error));
