@@ -4,18 +4,21 @@ body {
   background-color: #f9f9f9;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   color: #333;
 }
 
 /* Konteyner */
 .container {
-  max-width: 400px;
-  margin: 50px auto;
   text-align: center;
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
 }
 
 /* Başlık */
@@ -25,14 +28,25 @@ h1 {
   color: #444;
 }
 
-/* Buton */
-button {
-  padding: 10px 20px;
+/* İlçe Seçimi ve Buton */
+#actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+select, button {
+  padding: 10px;
   font-size: 16px;
-  color: #fff;
-  background-color: #ff5a5f;
-  border: none;
   border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #ff5a5f;
+  color: #fff;
+  border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -41,26 +55,9 @@ button:hover {
   background-color: #e04e50;
 }
 
-/* İlçe Seçimi */
-#district-select-container {
-  margin-top: 20px;
-}
-
-label {
-  font-size: 14px;
-  margin-right: 10px;
-}
-
-select {
-  padding: 8px;
-  font-size: 14px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
 /* Sonuç Kutusu */
 #result-container {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 #average-result {
